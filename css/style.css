@@ -1,0 +1,83 @@
+body{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 150%;
+}
+header{
+  background-color: rgb(205, 197, 36);
+}
+
+nav{
+  display: inline-block;
+  width: 80%;
+  font-size: 80%;
+  background-color: rgb(49, 190, 58);
+}
+
+.page-grid .gallery {
+  display:grid;
+  grid-template-columns: auto auto;
+  row-gap: 50px;
+  margin: 100px;
+
+}
+
+.page-grid .section > img{
+  background-color: yellow;
+  color: #000;
+  padding: 50px;
+
+}
+
+.page-flex .gallery {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  gap: 5rem;
+}
+
+.page-flex .gallery img{
+  flex: 1 1 300px;
+  height: auto;
+  border-radius: .25rem;
+  max-width: 200px;
+}
+
+
+nav > img {
+  width: 5%;
+  height: auto;
+  position:relative;border-right:10px; border-top: 10px;
+}
+
+
+main {
+  background-color: yellow;
+}
+
+footer{
+  background-color: rgb(49, 190, 58);
+  color: white;
+  font-size:small;
+  text-align: center;
+}
+
+li{
+  display: inline-block; 
+  width: 30%;
+  max-height: fit-content;
+  }
+
+h1{
+  text-align: center;
+  font-family: 'Lucida Calligraphy', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color:rgb(20, 34, 155);
+}
+
+p{
+  line-height: 150%;
+}
+
+.current{
+  background-color: gray;
+  text-transform: uppercase;
+}
