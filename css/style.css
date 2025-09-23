@@ -43,8 +43,8 @@ nav{
 }
 
 
-nav > img {
-  width: 5%;
+header > img {
+  width: 10%;
   height: auto;
   position:relative;border-right:10px; border-top: 10px;
 }

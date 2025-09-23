@@ -1,0 +1,137 @@
+:root {
+  --thumb: 140px;         /* base size for screenshots */
+  --scale: 3;           /* how much image grows */
+  --radius: 12px;
+  --shadow: 0 10px 28px rgba(0,0,0,.18);
+}
+
+h1 {font-size:x-large;
+    text-align:center}
+/* Shared gallery + card styles */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
+  justify-content: center;
+  max-width: 980px;
+  margin: 12px auto;
+  align-items: flex-start;
+}
+
+.card {
+  position: relative;
+  width: var(--thumb);
+  height: var(--thumb);
+  border-radius: var(--radius);
+  overflow: visible;          /* allow scaled image/panels to pop out */
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  transition: transform .18s ease, opacity .18s ease, box-shadow .18s ease;
+  will-change: transform, opacity;
+}
+
+.card.flip .side-panel{ left:auto; right:calc(100% + 8px); }
+/* ---------- Option A: Bottom Band Caption ---------- */
+
+.band-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  translate: 0 8px;           /* start slightly hidden */
+  opacity: 0;
+  padding: 10px 12px;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+  background: linear-gradient(to top, rgba(0,0,0,.65), rgba(0,0,0,.15));
+  color: #fff;
+  backdrop-filter: blur(4px);
+  transition: translate .18s ease, opacity .18s ease;
+}
+
+.band-caption h3 {
+  margin: 0 0 2px;
+  font-size: 14px;
+}
+
+.band-caption p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+/* ---------- Option B: Side Popout Panel ---------- */
+.side-panel {
+  position: absolute;
+  top: 50;
+  left: calc(100% + 8px);
+  width: 220px;
+  max-width: 60vw;
+  padding: 12px;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+  box-shadow: 0 10px 28px rgba(0,0,0,.22);
+  opacity: 0;
+  translate: -8px 0;
+  pointer-events: none;
+  transition: opacity .18s ease, translate .18s ease;
+}
+
+.side-panel h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.side-panel p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+/* Flip side panel to left if needed */
+.card.flip .side-panel {
+  left: auto;
+  right: calc(100% + 8px);
+}
+
+/* ---------- Hover / Focus Interaction ---------- */
+.card:hover img,
+.card:focus-within img {
+  transform: scale(var(--scale));
+  opacity: .95;              /* still see the screenshot clearly */
+  box-shadow: var(--shadow);
+  z-index: 0;
+}
+
+.card:hover .band-caption,
+.card:focus-within .band-caption {
+  translate: 0 0;
+  opacity: 1;
+  z-index: 1;
+}
+
+.card:hover .side-panel,
+.card:focus-within .side-panel {
+  opacity: 1;
+  translate: 0 0;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+/* right column */
+.screenshot {
+  margin: 0;                        /* reset <figure> defaults */
+  border-radius: 12px;
+  overflow: clip;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+.screenshot img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #f7f7f9;              /* behind transparent PNGs */
+}
